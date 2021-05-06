@@ -1,0 +1,254 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <!-- Font Family -->
+            <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+            <!-- Font Awesome Icons -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <style>
+            .wrapper {
+                width: 100%;
+                align-items: stretch;
+                overflow: auto;
+            }
+            #sidebar-wrapper {
+                min-height: 100vh;
+                min-width: 300px;
+            }
+            #sidebar-wrapper .sidebar-heading {
+                padding: 0.875rem 1.25rem;
+                font-size: 2rem;
+                text-align: center;
+            }
+            .list-group-item{
+                padding: 15px 0;
+                font-size: 16px;
+                font-weight: 400;
+                text-align: center;
+
+            }
+            .navbar{
+                padding: 5px!important;
+                background: #2d2d2d;
+                min-height: 40px;
+                box-shadow: 0px 1px 20px #ccc;
+                border-radius: 0px!important; 
+                position: relative;
+               }
+               
+               .main-nav a{
+                 color: #fff;
+                 font-size: 16px;
+                 font-weight: 400;
+                 margin-right: 20px;
+               }
+               
+               .main-nav a:hover{
+                 font-size: 16px;
+                 font-weight: 600;
+               }
+               .navbar-brand {
+                   float: left;
+                   height: auto!important;
+                   padding-top:0px;
+               }
+               
+               .navbar-toggler:focus{
+                 border: none;
+                 outline: none;
+                 align-items: center;
+                 
+               }
+               #navbarCollapse{
+                 padding:0px 10px;
+                 overflow: auto;
+               }
+               .form-group label{
+                font-size: 1.5rem;
+                font-weight: 500;
+              }
+      
+            .logdet{
+              font-size: 30px;
+              font-weight: 600;
+              text-align: center;
+            }
+          
+              .form-control{
+                width: 1000px;
+                height: 48px;
+                background-color: #ffffff;
+                font-size: 14px;
+                font-weight: 500;
+                color: #434343;
+                border-radius: 5px;
+                border: 1px solid #d6d6d6;
+                padding: 6px 12px; 
+              }
+          
+              .form-group{
+                margin-top: 2rem;
+              }
+              .input-group{
+                margin-top: 15px; 
+              }
+              input[type=radio] {
+                  margin: 5px -12px;
+                }
+          
+              .input-group label{
+                font-weight: 500;
+              }
+          
+              .form-control:focus {
+                border-color: #ABCDEF !important;
+                box-shadow: 0 0 5px rgba(171,205,239,1) !important;
+                font-size: 14px;
+                font-weight: 500;
+                color:#434343;
+              }
+          
+              input::placeholder  { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: #434343; /* Firefox */
+              }
+      
+              input[type="radio" i] {
+                  background-color: #CB202D!important;}
+          
+              #btn{
+                background-color:#CB202D;
+                border-radius: 5px;
+                height: 48px;
+          
+              }
+              .btn:hover{
+                color: white;
+                box-shadow:0 0 3px  #b666d2!important; 
+              }
+          
+              .radioname{
+                color: #5d4a41;font-size: 15px;padding: 0 5px;
+              }
+          
+              .foot{
+                  text-align: center;    
+                  margin-top: 30px;
+                  letter-spacing: 0.6px;
+                  font-size: 15px;
+                  font-weight: 500;
+              }
+          
+              .btn{
+                color: white;
+                font-size: 15px;
+                font-weight: 500;
+              }
+          
+              @media (max-width: 990px) {
+                form{
+                  margin-top:50px;
+              }
+              }
+          
+              @media (max-width: 500px) {
+                .form-control{
+                width: 260px;
+                height: 35px;
+                background-color: #ffffff;
+                font-size: 12px;
+                font-weight: 500;
+                color: #737999;
+              }
+          
+              .radioname{
+                font-size: 12px;
+              }
+              input[type=radio] {
+                  margin: 2px -12px;
+                }
+              #btn{
+                height: 40px;
+              }
+          
+              .form-control:focus {
+                
+                font-size: 12px;
+                font-weight: 500;
+                color: #737999;
+              }
+                form{
+                  margin-top:50px;
+                }
+              }
+          
+              button:focus {outline:0 !important;}
+        </style>
+</head>
+<body>
+    <div  class="wrapper d-flex">
+        <!-- Sidebar-->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Foodex</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-light" href="/admin">Users</a>
+                <a class="list-group-item list-group-item-action bg-light" href="/addhotel">Add Restaurants</a>
+            </div>
+        </div>
+        <!-- Page Content-->
+        <div class="wrapper">
+            <nav class="navbar navbar-expand-lg main-nav">
+               
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+    
+                            <div class="navbar-nav ml-auto">
+                                <a href="/logout"  class="nav-item nav-link active">Logout</a>
+                                       
+                            </div>
+                
+                
+                        </div>
+              </nav>
+            <div class="container-fluid">
+                <h1 class="mt-4 text-center">Add Restaurants</h1>
+                <div class="row m-0 justify-content-center">
+                    <form action="/addHotel/" method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">
+                          <label for="resname">Restuarant Name</label>
+                         <input type="text" class="form-control" id="rname" name="rname" placeholder="Your Email">
+                      </div>  
+                    
+                      <div class="form-group">
+                        <label for="resname">Restuarant Menu</label>
+                         <input type="password" class="form-control" id="rmenu" name="rmenu" placeholder="Your Password">
+                      </div>
+          
+            
+                      
+                      <div class=" form-group d-flex justify-content-center" id="btn">
+                       <button type="submit" name="signup" class="btn btn-block">Sign In</button>
+                      </div>
+                      <p class="foot">Don't have an account?<a href="/signup" style="color: #ce907e;padding-left: 3px;text-decoration-line: underline;">Sign Up</a></p>
+                    </form>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+
+</body></html>

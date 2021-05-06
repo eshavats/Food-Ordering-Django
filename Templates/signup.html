@@ -1,0 +1,212 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Register{% endblock %}
+
+{% block style_content %}
+<style>
+  form{
+    margin-top: 50px;
+  }
+
+        .form-group label{
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+
+      .logdet{
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+      }
+    
+        .form-control{
+          width: 400px;
+          height: 48px;
+          background-color: #ffffff;
+          font-size: 14px;
+          font-weight: 500;
+          color: #434343;
+          border-radius: 5px;
+          border: 1px solid #d6d6d6;
+          padding: 6px 12px; 
+        }
+    
+        .form-group{
+          margin-top: 2rem;
+        }
+        .input-group{
+          margin-top: 15px; 
+        }
+        input[type=radio] {
+            margin: 5px -12px;
+          }
+    
+        .input-group label{
+          font-weight: 500;
+        }
+    
+        .form-control:focus {
+          border-color: #ABCDEF !important;
+          box-shadow: 0 0 5px rgba(171,205,239,1) !important;
+          font-size: 14px;
+          font-weight: 500;
+          color:#434343;
+        }
+    
+        input::placeholder  { /* Chrome, Firefox, Opera, Safari 10.1+ */
+          color: #434343; /* Firefox */
+        }
+
+        input[type="radio" i] {
+            background-color: #CB202D!important;}
+    
+        #btn{
+          background-color:#CB202D;
+          border-radius: 5px;
+          height: 48px;
+    
+        }
+        .btn:hover{
+          color: white;
+          box-shadow:0 0 3px  #b666d2!important; 
+        }
+    
+        .radioname{
+          color: #5d4a41;font-size: 15px;padding: 0 5px;
+        }
+    
+        .foot{
+            text-align: center;    
+            margin-top: 30px;
+            letter-spacing: 0.6px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+    
+        .btn{
+          color: white;
+          font-size: 15px;
+          font-weight: 500;
+        }
+    
+        .fit-image{
+        width: 100%;
+        object-fit: cover;
+        height: auto; /* only if you want fixed height */
+        }
+    
+        @media (max-width: 990px) {
+          form{
+            margin-top:50px;
+        }
+        }
+    
+        @media (max-width: 500px) {
+          .form-control{
+          width: 260px;
+          height: 35px;
+          background-color: #ffffff;
+          font-size: 12px;
+          font-weight: 500;
+          color: #737999;
+        }
+    
+        .radioname{
+          font-size: 12px;
+        }
+        input[type=radio] {
+            margin: 2px -12px;
+          }
+    
+        .logo img{
+          width: 200px;
+        }
+    
+    
+        #btn{
+          height: 40px;
+        }
+    
+        .form-control:focus {
+          
+          font-size: 12px;
+          font-weight: 500;
+          color: #737999;
+        }
+    
+    
+          .logdet{
+            font-size: 25px;
+          }
+    
+          form{
+            margin-top:50px;
+          }
+    
+        }
+    
+    
+        button:focus {outline:0 !important;}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="row m-0">
+      <div class="col-lg-6 align-self-center p-0" >
+        <div class="row m-0 justify-content-center">
+          <form action="/signupUser/" method="POST">
+            {% csrf_token %}
+            <div  class="logdet">Register</div>
+            <div class="text-center" style="font-size: 18px;color:red; font-weight:500">{{ error }}</div>
+            <div class="form-group">
+               <input type="text" class="form-control" id="name" name="name" placeholder="Your Name"> 
+            </div> 
+            
+            <div class="form-group">
+              <input type="text" class="form-control" id="contact" name="contact" placeholder="Your Contact No.">
+           </div>  
+        
+            <div class="form-group">
+               <input type="text" class="form-control" id="email" name="email" placeholder="Your Email">
+            </div>  
+
+            <div class="form-group">
+               <input type="password" class="form-control" id="pass" name="password" placeholder="Your Password">
+            </div>
+
+              <div class="input-group">
+                  <div class="form-check col-4">
+                  <input class="form-check-input" type="radio" name="gender"  value="Male">
+                  <label for="remember" class="form-check-label radioname"
+                  >Male</label>
+                </div>
+                 <div class="form-check col-4">
+                  <input class="form-check-input" type="radio" name="gender"  value="Female">
+                  <label for="remember" class="form-check-label radioname" 
+
+                  >Female</label>
+                </div>
+                <div class="form-check col-4">
+                    <input class="form-check-input" type="radio" name="gender"  value="Other">
+                    <label for="remember" class="form-check-label radioname"
+                    >Other</label>
+                  </div>
+              </div>
+
+            
+            <div class=" form-group d-flex justify-content-center" id="btn">
+             <button type="submit" name="signup" class="btn btn-block">Sign Up</button>
+            </div>
+            <p class="foot">Already have an account?<a href="" style="color: #ce907e;padding-left: 3px;text-decoration-line: underline;">Sign In</a></p>
+          </form>
+        </div>
+      </div>
+     <div class="col-lg-6 p-0">
+        <div class="img-side">
+        <img src="{% static 'images/signup.jpg' %}" class="img-responsive fit-image">
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
