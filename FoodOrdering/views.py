@@ -48,6 +48,7 @@ def cart(request):
 
                 itm["id"] = id
                 itm["name"] = food.name
+                itm["img"] = food.img
                 itm["price"] = food.price
                 itm["quantity"] = cart[id]
 
@@ -61,5 +62,4 @@ def cart(request):
         cart = request.session.get("cart")
         del cart[id]
         request.session["cart"] = cart
-        print(request.session.get("cart"))
         return redirect("/cart")
