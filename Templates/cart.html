@@ -10,7 +10,8 @@
     <table class="table mt-5">
         <thead>
           <tr>
-            <th scope="col">Item</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
             <th scope="col">Action</th>
@@ -25,14 +26,15 @@
 
           {% for x in items %}
           <tr>
-            <td>{{x.name}}</td>
-            <td>{{x.quantity}}</td>
-            <td>Rs. {{x.price}}</td>
-            <td>
+            <td class="align-middle"> <img class="image" src="{{x.img}}" alt=""></td>
+            <td class="align-middle">{{x.name}}</td>
+            <td class="align-middle">{{x.quantity}}</td>
+            <td class="align-middle">Rs. {{x.price}}</td>
+            <td class="align-middle">
               <form action="" method="POST">
                 {% csrf_token %}
                 <input hidden name="id" value="{{x.id}}" />
-                <button class="btn alert-danger" type="submit"><i class="far fa-trash-alt"></i></button>
+                <button class="btn btn-danger" type="submit">Delete</button>
               </form>
             </td>
           </tr>
@@ -42,7 +44,7 @@
         
 
           <tr class="table-dark">
-            <td colspan="5" style="color: black;font-weight: bold;">TOTAL PRICE: Rs. {{total}}</td>
+            <td colspan="5" style="color: black;font-weight: bold;">Total Price: Rs. {{total}}</td>
           </tr>
         </tbody>
       </table>

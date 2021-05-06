@@ -48,6 +48,10 @@ def addHotel(request):
 def admin(request):
     users = User.objects.all()
     return render(request, 'admin.html',{'users':users})
+        # id = request.POST["id"]
+        # qt = int(request.POST["quantity"])
+
+        # food = Food.objects.get(pk=id)
 
 def login(request):
     return render(request,"login.html")
@@ -166,3 +170,8 @@ def delete(request,n):
 def edit(request,n):
     menu = Food.objects.get(id=n)
     return render(request, 'addhotel.html',{'menu':menu})
+        # id = request.POST["id"]
+        # cart = request.session.get("cart")
+        # del cart[id]
+        # request.session["cart"] = cart
+        # return redirect("/cart")
