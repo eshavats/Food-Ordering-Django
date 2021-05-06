@@ -1,7 +1,7 @@
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Add Menu</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -118,11 +118,10 @@
                 color: #434343; /* Firefox */
               }
       
-              input[type="radio" i] {
-                  background-color: #CB202D!important;}
           
               #btn{
-                background-color:#CB202D;
+            
+                background-color:green;
                 border-radius: 5px;
                 height: 48px;
           
@@ -145,6 +144,7 @@
               }
           
               .btn{
+                width: 50%;
                 color: white;
                 font-size: 15px;
                 font-weight: 500;
@@ -196,8 +196,9 @@
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Foodex</div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action bg-light" href="/admin">Users</a>
-                <a class="list-group-item list-group-item-action bg-light" href="/addhotel">Add Restaurants</a>
+              <a class="list-group-item list-group-item-action bg-light" href="/admin">Users</a>
+              <a class="list-group-item list-group-item-action bg-light" href="/addhotel">Add Menu</a>
+              <a class="list-group-item list-group-item-action bg-light" href="/allMenu">Your Menu</a>
             </div>
         </div>
         <!-- Page Content-->
@@ -219,26 +220,40 @@
                         </div>
               </nav>
             <div class="container-fluid">
-                <h1 class="mt-4 text-center">Add Restaurants</h1>
+                <h1 class="mt-4 text-center">Add Menu</h1>
                 <div class="row m-0 justify-content-center">
-                    <form action="/addHotel/" method="POST">
+                    <form action="/addHotel/" method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
                       <div class="form-group">
-                          <label for="resname">Restuarant Name</label>
-                         <input type="text" class="form-control" id="rname" name="rname" placeholder="Your Email">
+                          <label>Name</label>
+                         <input type="text" class="form-control" id="name" name="name" value="{% if menu %}{{menu.name}}{% endif %}" placeholder="Dish Name">
                       </div>  
                     
                       <div class="form-group">
-                        <label for="resname">Restuarant Menu</label>
-                         <input type="password" class="form-control" id="rmenu" name="rmenu" placeholder="Your Password">
+                        <label>Description</label>
+                         <input type="text" class="form-control" id="desc" name="desc" value="{% if menu %}{{menu.desc}}{% endif %}" placeholder="Description">
                       </div>
+
+                      <div class="form-group">
+                        <label>Price</label>
+                         <input type="text" class="form-control" id="price" name="price" value="{% if menu %}{{menu.price}}{% endif %}" placeholder="Price">
+                      </div>
+                      
+                      <div class="form-group">
+                        <label>Image URL</label>
+                         <input type="text" class="form-control" id="img" name="img" value="{% if menu %}{{menu.img}}{% endif %}" placeholder="URL">
+                      </div>
+                      {% if menu %} 
+                      <input type='hidden' value='{{ menu.id }}' name='editid'>
+                      {% endif %}
+                      
           
             
                       
-                      <div class=" form-group d-flex justify-content-center" id="btn">
-                       <button type="submit" name="signup" class="btn btn-block">Sign In</button>
+                      <div class="d-flex justify-content-center" id="btn">
+                       <button type="submit" name="signup" class="btn btn-block">Add</button>
                       </div>
-                      <p class="foot">Don't have an account?<a href="/signup" style="color: #ce907e;padding-left: 3px;text-decoration-line: underline;">Sign Up</a></p>
+                      
                     </form>
                   </div>
             </div>

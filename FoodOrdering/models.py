@@ -7,3 +7,9 @@ class User(models.Model):
     email = models.CharField(max_length=80)
     password = models.CharField(max_length=80)
     gender = models.CharField(max_length=10)
+    
+class Food(models.Model):
+    name = models.CharField(max_length=50)
+    desc = models.CharField(max_length=150)
+    price = models.FloatField()
+    img = models.CharField(max_length=250)
