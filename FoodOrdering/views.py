@@ -11,7 +11,6 @@ def home(request):
     else:
         return redirect('/login')
         
-
 def addhotel(request):
     return render(request,"addhotel.html")
 
@@ -61,11 +60,12 @@ def signup(request):
 
 def menu(request):
     if 'email' in request.session:
-        if(request.method == "GET"):
+        if request.method == "GET":
             foods = Food.objects.all()
             return render(request,"menu.html", {'foods': foods})
         else:
             id = request.POST["id"]
+            qt = int(request.POST["quantity"])
             food = Food.objects.get(pk=id)
 
             cart = request.session.get("cart")
@@ -74,15 +74,14 @@ def menu(request):
                 quantity = cart.get(id)
 
                 if quantity:
-                    cart[id] = quantity+1
+                    cart[id] = quantity+qt
                 else:
-                    cart[id] = 1
+                    cart[id] = qt
             else:
                 cart = {}
-                cart[id] = 1
+                cart[id] = qt
             
             request.session["cart"] = cart
-            print(cart)
             request.session["msg"] = food.name + " " + "successfully added to cart!"
             return redirect("/menu")
     else:
@@ -106,6 +105,7 @@ def cart(request):
                     itm["name"] = food.name
                     itm["price"] = food.price
                     itm["quantity"] = cart[id]
+                    itm["img"] = food.img
 
                     total += food.price*cart[id]
 
@@ -153,7 +153,8 @@ def loginUser(request):
         error_msg = None
         if User.objects.filter(email=email,password=password).exists():
             request.session['email'] = email
-            return redirect('/home')
+            del request.session['msg']
+            return redirect('/menu')
         elif email == 'admin@gmail.com' and password == 'admin123':
             request.session['email'] = 'admin@gmail.com'
             return redirect('/admin')
