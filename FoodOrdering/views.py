@@ -14,6 +14,8 @@ def menu(request):
         return render(request,"menu.html", {'foods': foods})
     else:
         id = request.POST["id"]
+        qt = int(request.POST["quantity"])
+
         food = Food.objects.get(pk=id)
 
         cart = request.session.get("cart")
@@ -22,15 +24,14 @@ def menu(request):
             quantity = cart.get(id)
 
             if quantity:
-                cart[id] = quantity+1
+                cart[id] = quantity+qt
             else:
-                cart[id] = 1
+                cart[id] = qt
         else:
             cart = {}
-            cart[id] = 1
+            cart[id] = qt
         
         request.session["cart"] = cart
-        print(cart)
         request.session["msg"] = food.name + " " + "successfully added to cart!"
         return redirect("/menu")
 

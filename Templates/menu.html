@@ -30,6 +30,7 @@
                     </div>
                     <form action="" method="POST">
                         {% csrf_token %}
+                        <input class="form-control quantity" placeholder="Quantity" type="number" name="quantity" required min="0" />
                         <input hidden name="id" value="{{x.id}}" />
                         <a href="#"><button type="submit" class="btn btn-warning cust-btn">Add To Cart</button></a>
                     </form>
