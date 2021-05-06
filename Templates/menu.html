@@ -5,6 +5,14 @@
 {% block title %}Menu{% endblock title %}
 
 {% block content %}
+{% if request.session.msg %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{request.session.msg}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
 <h1 class="heading mt-5">Menu</h1>
 <div class="container menu">
     
@@ -20,7 +28,11 @@
                         <p class="ingredients">{{x.desc}}</p>
                         <p class="amount">Rs. {{x.price}}</p>
                     </div>
-                    <a href="#"><button type="button" class="btn btn-warning cust-btn">Add To Cart</button></a>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input hidden name="id" value="{{x.id}}" />
+                        <a href="#"><button type="submit" class="btn btn-warning cust-btn">Add To Cart</button></a>
+                    </form>
                 </div>
                 <div class="col-1">
                     <div class="category veg"></div>           
