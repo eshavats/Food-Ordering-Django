@@ -5,78 +5,28 @@
 {% block title %}Menu{% endblock title %}
 
 {% block content %}
-<h1 class="heading">Menu</h1>
+<h1 class="heading mt-5">Menu</h1>
 <div class="container menu">
     
-    <div class="row">
-        <div class="col item-container">
+        {% for x in foods %}
+        <div class="col item-container mb-5">
             <div class="row">
-                <img class="image" src="{% static 'Images/pizza.jfif' %}" alt="">
+                <div class="col-2">
+                    <img class="image" src="{{x.img}}" alt="">
+                </div>
                 <div class="col">
                     <div class="info">
-                        <h2>Pizza</h2>
-                        <p class="ingredients">Ingredients:-Pepperoni, tomatoes, mushrooms, and onion.</p>
-                        <p class="amount">Rs.500</p>
+                        <h2>{{x.name}}</h2>
+                        <p class="ingredients">{{x.desc}}</p>
+                        <p class="amount">Rs. {{x.price}}</p>
                     </div>
                     <a href="#"><button type="button" class="btn btn-warning cust-btn">Add To Cart</button></a>
                 </div>
-                <div class="col">
+                <div class="col-1">
                     <div class="category veg"></div>           
                 </div>
             </div>
         </div>
-        <div class="col item-container">
-            <div class="row">
-                <img class="image" src="{% static 'Images/pizza.jfif' %}" alt="">
-                <div class="col">
-                    <div class="info">
-                        <h2>Pizza</h2>
-                        <p class="ingredients">Ingredients:-Pepperoni, tomatoes, mushrooms, and onion.</p>
-                        <p class="amount">Rs.500</p>
-                    </div>
-                    <a href="#"><button type="button" class="btn btn-warning cust-btn">Add To Cart</button></a>
-                </div>
-                <div class="col">
-                    <div class="category veg"></div>          
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row mt-5">
-        <div class="col item-container">
-            <div class="row">
-                <img class="image" src="{% static 'Images/pizza.jfif' %}" alt="">
-                <div class="col">
-                    <div class="info">
-                        <h2>Pizza</h2>
-                        <p class="ingredients">Ingredients:-Pepperoni, tomatoes, mushrooms, and onion.</p>
-                        <p class="amount">Rs.500</p>
-                    </div>
-                    <a href="#"><button type="button" class="btn btn-warning cust-btn">Add To Cart</button></a>
-                </div>
-                <div class="col">
-                    <div class="category veg"></div>           
-                </div>
-            </div>
-        </div>
-        <div class="col item-container">
-            <div class="row">
-                <img class="image" src="{% static 'Images/pizza.jfif' %}" alt="">
-                <div class="col">
-                    <div class="info">
-                        <h2>Pizza</h2>
-                        <p class="ingredients">Ingredients:-Pepperoni, tomatoes, mushrooms, and onion.</p>
-                        <p class="amount">Rs.500</p>
-                    </div>
-                    <a href="#"><button type="button" class="btn btn-warning cust-btn">Add To Cart</button></a>
-                </div>
-                <div class="col">
-                    <div class="category veg"></div>           
-                </div>
-            </div>
-        </div>
-    </div>
+        {% endfor %}
 </div>
 {% endblock content %}

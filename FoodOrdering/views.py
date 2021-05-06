@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Food
 
 # Create your views here.
 def welcome(request):
@@ -8,7 +9,9 @@ def home(request):
     return render(request,"home.html")
 
 def menu(request):
-    return render(request,"menu.html")
+    if(request.method == "GET"):
+        foods = Food.objects.all()
+    return render(request,"menu.html", {'foods': foods})
 
 def cart(request):
     return render(request,"cart.html")
